@@ -1,7 +1,7 @@
 # ZELA
 ## Synopsis (update)
 
-The goal of this project is to map trends in allocation of Petroleum Exploration Licences (PELS) in Namibia. By structuring and mapping data, details, trends and connections in this sector, this platform will work to open up a system that is currently opaque and vulnerable to corruption. 
+The goal of this project is to map trends in allocation of Petroleum Exploration Licences (PELS) in Zimbabwe. By structuring and mapping data, details, trends and connections in this sector, this platform will work to open up a system that is currently opaque and vulnerable to corruption. 
 
 ## Code Example (update)
 
@@ -26,6 +26,7 @@ Describe and show how to run the tests with code examples.
 ## Contributors (update)
 
 * The Engine Room
+* ZELA
 
 
 ## License (update)
