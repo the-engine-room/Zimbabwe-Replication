@@ -1,4 +1,4 @@
-# Transparent Oil Namibia
+# Transparent Oil Zimbabwe
 
 The Transparent Oil Namibia platform maps the details, trends and connections in the allocation of Petroleum Exploration Licences in Namibia.
 
