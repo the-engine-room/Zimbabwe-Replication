@@ -1,0 +1,13 @@
+/* ====================================
+   Table
+   ==================================== */
+
+table {
+    table-layout: fixed;
+    font-size: 15px;
+    border: 1px solid #d0d0d0;
+
+    th,td {
+        padding: 15px;
+    }
+}

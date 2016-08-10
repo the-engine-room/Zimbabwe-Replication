@@ -1,0 +1,80 @@
+/* ====================================
+   Footer
+   ==================================== */
+
+.Footer {
+    background-image: url(#{$assetsPath}header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    color: #fff;
+
+    .Header-title {
+        transform: scale(0.6);
+    }
+
+    &-inner {
+        padding: 80px 0 30px 0;
+        background-image: linear-gradient(-180deg, rgba(51,51,51,0.50) 0%, rgba(255,255,255,0.70) 75%);
+    }
+
+    &-logos {
+        padding: 0 20px;
+        margin-top: -50px;
+
+        @media #{$medium-and-up} {
+            padding: 0;
+        }
+
+        a {
+            transition: transform 0.3s ease;
+            backface-visibility: hidden;
+            display: inline-block;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &--ippr {
+        display: none;
+    }
+
+    &--ipprSmall {
+        max-width: 240px;
+        width: 100%;
+    }
+
+    @media #{$medium-and-up} {
+        &--ippr {
+            display: inline-block;
+            max-width: 700px;
+            width: 100%;
+        }
+
+        &--ipprSmall {
+            display: none;
+        }
+    }
+
+    &--matchbox {
+        max-width: 270px;
+        width: 100%;
+    }
+
+    &-poweredBy {
+        color: #1E2D3A;
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    &-info {
+        margin-top: 50px;
+        a {
+            margin: 0 25px;
+        }
+    }
+
+}

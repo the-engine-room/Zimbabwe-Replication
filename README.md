@@ -1,54 +1,48 @@
-# Zimbabwe
-## Synopsis (update)
+# Transparent Oil Namibia
 
-The goal of this project is to map trends in allocation of Petroleum Exploration Licences (PELS) in Zimbabwe. By structuring and mapping data, details, trends and connections in this sector, this platform will work to open up a system that is currently opaque and vulnerable to corruption. 
+The Transparent Oil Namibia platform maps the details, trends and connections in the allocation of Petroleum Exploration Licences in Namibia.
 
-## Code Example (update)
+## Installing / Getting started
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+Requirements:
 
-## Motivation (update
+* [node.js](https://nodejs.org/en/)
+* [Grunt](http://gruntjs.com/getting-started)
 
-The project will develop a system that simplifies the process of turning oil and gas exploration data into usable formats and visualizations on the web. The data gathered will aid further research which will help the public better understand the trends and signs of corruption in the sector. We want to expose these information on a publicly available website.
+```shell
+git clone THIS-REPO.git
+cd THIS-REPO
+npm install
+grunt
+```
 
-## Installation (update)
+This will run localPHP server and live reload the browser when the files change. At this point your default browser will open [http://localhost:9011/](http://localhost:9011/).
 
-Provide code examples and explanations of how to get the project.
+### Building for production
 
-## API Reference (update)
+```shell
+grunt build
+```
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
-
-## Tests (update)
-
-Describe and show how to run the tests with code examples.
-
-## Contributors (update)
-
-* The Engine Room
-* ZELA
+This will compile everything for production in the `dist` folder.
 
 
-## License (update)
+### Deploying / Publishing - TODO
 
-MIT License
+In case there's some step you have to take that publishes this project to a
+server, this is the right time to state it.
 
-Copyright (c) [2016] [The Engine Room]
+```shell
+packagemanager deploy awesome-project -s server.com -u username -p password
+```
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+And again you'd need to tell what the previous code actually does.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+## Licensing
+
+One really important part: Give your project a proper license. Here you should
+state what the license is and how to find the text version of the license.
+Something like:
+
+"The code in this project is licensed under MIT license."

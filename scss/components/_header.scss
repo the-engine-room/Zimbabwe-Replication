@@ -1,0 +1,125 @@
+/* ====================================
+   Header
+   ==================================== */
+.Header {
+    background-image: url(#{$assetsPath}header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    padding-top: 50px;
+
+    &-inner {
+        backface-visibility: hidden;
+        color: #fff;
+        position: relative;
+    }
+
+    &-title {
+
+        text-transform: uppercase;
+        margin: 0 0 50px 0;
+        line-height: 1;
+        font-size: 0;
+        position: relative;
+
+        a {
+            color: #fff;
+            display: inline-block;
+        }
+
+        &--secondary {
+            font-size: 20px;
+            opacity: 0.7;
+            letter-spacing: 4px;
+        }
+
+        &--primary {
+            @include fluid-type(font-size, 320px, 1200px, 40px, 80px);
+            font-family: 'robotoblack';
+            display: block;
+            font-weight: bold;
+            letter-spacing: 13.33px;
+            margin-top: 20px;
+            line-height: 1;
+            opacity: 1;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%,27px);
+            width: 60px;
+            height: 5px;
+            background-color: map-get($brand-colors, 'accent');
+            border-radius: 2px;
+        }
+    }
+
+    &-description {
+        font-family: 'Roboto Slab', serif;
+        margin: 0;
+    }
+
+    &-navigation {
+        margin: 0;
+
+        @media #{$large-and-up} {
+            position: absolute;
+            top: -10px;
+            right: 40px;
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        a {
+            text-transform: uppercase;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+            padding: 10px;
+
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translate(-50%,0);
+                width: 0;
+                height: 2px;
+                background-color: map-get($brand-colors, 'accent');
+                border-radius: 2px;
+                transition: width 0.3s ease;
+            }
+
+            &:hover:after,
+            &.is-active:after {
+                width: 100%;
+            }
+
+        }
+    }
+
+
+    &-tabs {
+        margin-bottom: 0;
+
+        i,span {
+            vertical-align: middle;
+        }
+
+        @media #{$large-and-up} {
+            i {
+                display: none;
+            }
+        }
+    }
+
+    &--plain {
+        padding-bottom: 40px;
+    }
+
+}
