@@ -1,4 +1,4 @@
-# ZELA
+# Zimbabwe
 ## Synopsis (update)
 
 The goal of this project is to map trends in allocation of Petroleum Exploration Licences (PELS) in Zimbabwe. By structuring and mapping data, details, trends and connections in this sector, this platform will work to open up a system that is currently opaque and vulnerable to corruption. 
