@@ -104,7 +104,7 @@
                     <h1 class="Header-title">
                         <a href="/">
                             <span class="Header-title--secondary">Transparent Oil</span>
-                            <span class="Header-title--primary">Namibia</span>
+                            <span class="Header-title--primary">Zimbabwe</span>
                         </a>
                     </h1>
                 </div>
