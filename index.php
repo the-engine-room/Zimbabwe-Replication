@@ -20,7 +20,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Transparent Oil Namibia</title>
+    <title>Transparent Oil Zimbabwe</title>
     <meta name="description" content="The Transparent Oil Namibia platform maps the details, trends and connections in the allocation of Petroleum Exploration Licences in Namibia.">
 
     <script>
