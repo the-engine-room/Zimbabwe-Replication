@@ -62,7 +62,7 @@
                                 <i class="material-icons small prefix Search-trigger">search</i>
                                 <i class="material-icons small prefix Search-remove">close</i>
                                 <input id="search-tab-1" type="text" class="Search-input" />
-                                <label for="search-tab-1">Filter by licence!</label>
+                                <label for="search-tab-1">Filter by licence</label>
                             </div>
 
                         </div>
@@ -78,7 +78,7 @@
                         <div class="List-header brand green">
                             <div class="List-headerActive">
                                 <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
-                                <span>Companies in ownership <span class="List-count"></span></span>
+                                <span>Companies in ownership test <span class="List-count"></span></span>
                             </div>
                         </div>
 
