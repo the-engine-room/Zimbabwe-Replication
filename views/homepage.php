@@ -78,7 +78,7 @@
                         <div class="List-header brand green">
                             <div class="List-headerActive">
                                 <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
-                                <span>Companies in ownership test <span class="List-count"></span></span>
+                                <span>Companies in ownership<span class="List-count"></span></span>
                             </div>
                         </div>
 
