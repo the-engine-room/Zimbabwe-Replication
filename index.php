@@ -159,7 +159,7 @@
             <div class="row center-align">
                 <div class="col s12">
                     <p class="Header-title">
-                        <span class="Header-title--secondary">Transparent Oil</span>
+                        <span class="Header-title--secondary">TEST Transparent Oil</span>
                         <span class="Header-title--primary">Namibia</span>
                     </p>
                 </div>
