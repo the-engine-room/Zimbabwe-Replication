@@ -21,7 +21,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Transparent Oil Zimbabwe</title>
-    <meta name="description" content="The Transparent Oil Namibia platform maps the details, trends and connections in the allocation of Petroleum Exploration Licences in Namibia.">
+    <meta name="description" content="The Transparent Oil Zimbabwe platform maps the details, trends and connections in the allocation of Petroleum Exploration Licences in Zimbabwe.">
 
     <script>
         (function () {
@@ -60,10 +60,10 @@
         }());
     </script>
 
-    <meta property="og:site_name" content="Transparent Oil Namibia" />
-    <meta property="og:title" content="Transparent Oil Namibia" />
+    <meta property="og:site_name" content="Transparent Oil Zimbabwe" />
+    <meta property="og:title" content="Transparent Oil Zimbabwe" />
 
-    <meta property="og:description" content="Mapping license details, connections, and trends in the allocation of Petroleum Exploration Licences in Namibia." />
+    <meta property="og:description" content="Mapping license details, connections, and trends in the allocation of Petroleum Exploration Licences in Zimbabwe." />
     <meta property="og:url" content="<?php echo $URL ?>" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/favicons/ogMain.png" />
@@ -94,9 +94,9 @@
     <!-- endbuild -->
 
 </head>
-<body<?php if($match[name] == 'homepage'){ echo ' class="App"'; } ?>>
+<body<?php if($match['name'] == 'homepage'){ echo ' class="App"'; } ?>>
 
-    <header class="Header center-align<?php if($match[name] == 'about'){ ?> Header--plain<?php } ?>">
+    <header class="Header center-align<?php if($match['name'] == 'about'){ ?> Header--plain<?php } ?>">
         <div class="Header-inner">
 
             <div class="row">
@@ -109,15 +109,15 @@
                     </h1>
                 </div>
                 <div class="col s12 m6 offset-m3">
-                    <p class="light Header-description">Mapping license details, connections, and trends in the allocation of Petroleum Exploration Licences in Namibia.</p>
+                    <p class="light Header-description">Mapping license details, connections, and trends in the allocation of Petroleum Exploration Licences in Zimbabwe.</p>
                 </div>
             </div>
 
             <ul class="Header-navigation">
-                <li><a href="/about/"<?php if($match[name] == 'about'){ echo ' class="is-active"'; } ?>>About</a></li>
+                <li><a href="/about/"<?php if($match['name'] == 'about'){ echo ' class="is-active"'; } ?>>About</a></li>
             </ul>
 
-            <?php if($match[name] == 'homepage'){ ?>
+            <?php if($match['name'] == 'homepage'){ ?>
                 <ul class="tabs Header-tabs">
                     <li class="tab col">
                         <a href="/#tab-0" class="brand blue" data-view="licenses">
@@ -137,7 +137,7 @@
         </div>
     </header>
 
-    <?php if($match[name] == 'about'){ ?>
+    <?php if($match['name'] == 'about'){ ?>
         <div class="Search brand blue"></div>
     <?php } ?>
 
@@ -160,7 +160,7 @@
                 <div class="col s12">
                     <p class="Header-title">
                         <span class="Header-title--secondary">Transparent Oil</span>
-                        <span class="Header-title--primary">Namibia</span>
+                        <span class="Header-title--primary">Zimbabwe</span>
                     </p>
                 </div>
             </div>
