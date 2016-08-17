@@ -29,7 +29,7 @@
 
         @media #{$large-and-up} {
             width: auto;
-            margin: 0 10px;
+            margin: 10px;
 
             a {
                 font-weight: bold;
@@ -57,19 +57,21 @@
 
             &.active {
                 color: #fff;
+                background: #FFCA00;
                 &:hover {
                     color: #fff;
                 }
 
                 @media #{$large-and-up} {
-                    transform: translate(0,0);
+                //#FFCA00    transform: translate(0,0);
                 }
             }
 
             &:hover {
                 color: inherit;
                 @media #{$large-and-up} {
-                    transform: translate(0,0);
+                    background: fade-out(#FFCA00, 0.4);
+                   // transform: translate(0,0);
                 }
             }
         }

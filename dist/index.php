@@ -89,9 +89,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet">
 
-    <!-- build:css /css/min.css -->
-    <link rel="stylesheet" href="/css/global.css" />
-    <!-- endbuild -->
+    <link rel="stylesheet" href="/css/min.9d0088e0.css">
 
 </head>
 <body<?php if($match['name'] == 'homepage'){ echo ' class="App"'; } ?>>
@@ -175,22 +173,22 @@
                 <div class="col s12 m10 offset-m1">
                     <p class="Footer-poweredBy">a project by</p>
                     <a href="http://www.ippr.org.na/">
-                        <img src="/images/dist/zela.png" alt="IPPR" width="379" height="77" class="Footer--ippr" />
-                        <img src="/images/dist/zela.png" alt="IPPR" width="379" height="77" class="Footer--ipprSmall" />
+                        <img src="/images/dist/zela.d6bf9f32.png" alt="IPPR" width="379" height="77" class="Footer--ippr" />
+                        <img src="/images/dist/zela.d6bf9f32.png" alt="IPPR" width="379" height="77" class="Footer--ipprSmall" />
                     </a>
                 </div>
                 <div class="col s12 m10 offset-m1">
                     <p class="Footer-poweredBy">powered by</p>
                     <a href="https://www.theengineroom.org/" title="The engine room - Accelerating social change">
-                        <img src="/images/dist/matchbox.png" alt="The engine room" width="844" height="261" class="Footer--matchbox" />
+                        <img src="/images/dist/matchbox.c8916a95.png" alt="The engine room" width="844" height="261" class="Footer--matchbox" />
                     </a>
                 </div>
                 <div class="col s12 m10 offset-m1 Footer-info">
                     <a href="https://creativecommons.org/licenses/by-sa/4.0/" title="Creative Commons licence">
-                        <img src="/images/dist/cc.png" alt="" width="117" height="33" class="Footer--cc" />
+                        <img src="/images/dist/cc.4c4a0969.png" alt="" width="117" height="33" class="Footer--cc" />
                     </a>
                     <a href="https://github.com/the-engine-room/ippr/" title="IPPR Github repo">
-                        <img src="/images/dist/github.png" alt="" width="126" height="32" class="Footer--github" />
+                        <img src="/images/dist/github.5a9b21c7.png" alt="" width="126" height="32" class="Footer--github" />
                     </a>
                 </div>
             </div>
@@ -206,10 +204,7 @@
     <script src="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
-    <!-- build:js /js/min.js -->
-    <script src="/js/vendor/burza/utils.js"></script>
-    <script src="/js/main.plain.js"></script>
-    <!-- endbuild -->
+    <script src="/js/min.9033021e.js"></script>
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -33,13 +33,13 @@
                 <div class="Data-holder">
 
                     <div class="List List--main z-depth-1" data-level="0">
-                        <div class="List-header ui-colors green">
+                        <div class="List-header brand blue">
                             <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
                             <span>Licenses <span class="List-count"></span></span>
                         </div>
 
 
-                        <div class="Search Search--mobile hide-on-large-only ui-colors green">
+                        <div class="Search Search--mobile hide-on-large-only brand blue">
 
                             <!--div class="Filters Filters--mobile">
                                 <i class="material-icons small Filters-trigger js-dropdown-trigger" data-beloworigin="true" data-activates='filters1'>filter_list</i>
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="List List--extra z-depth-1 u-isHidden" data-level="1">
-                        <div class="List-header ui-colors green">
+                        <div class="List-header brand green">
                             <div class="List-headerActive">
                                 <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
                                 <span>Companies in ownership<span class="List-count"></span></span>
@@ -95,7 +95,7 @@
                     </div>
 
                     <div class="List List--info z-depth-1 hide-on-large-only" data-level="2">
-                        <div class="List-header ui-colors green">
+                        <div class="List-header brand green">
                             <div class="List-headerActive">
                                 <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
                                 <span>Transaction history for <span class="List-infoName"></span></span>
@@ -166,7 +166,7 @@
 
         <div id="tab-1" class="col s12 tab-content">
 
-            <div class="Search z-depth-1 hide-on-med-and-down ui-colors green">
+            <div class="Search z-depth-1 hide-on-med-and-down brand green">
 
                 <div class="input-field Search-field">
                     <i class="material-icons small prefix Search-trigger">search</i>
@@ -193,7 +193,7 @@
                 <div class="Data-holder">
 
                     <div class="List List--main z-depth-1" data-level="0">
-                        <div class="List-header ui-colors green">
+                        <div class="List-header brand green">
                             <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
                             <span>Companies <span class="List-count"></span></span>
                         </div>
@@ -232,7 +232,7 @@
                     </div>
 
                     <div class="List List--extra z-depth-1 u-isHidden" data-level="1">
-                        <div class="List-header ui-colors green">
+                        <div class="List-header brand blue">
                             <div class="List-headerActive">
                                 <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
                                 <span>Licenses in ownership <span class="List-count"></span></span>
@@ -293,7 +293,7 @@
 
         <div class="AdditionalInfo u-isHidden">
 
-            <div class="AdditionalInfo-header ui-colors green u-cf">
+            <div class="AdditionalInfo-header brand blue u-cf">
 
                 <h2 class="AdditionalInfo-title">Transaction history for Licence number <span></span></h2>
 
