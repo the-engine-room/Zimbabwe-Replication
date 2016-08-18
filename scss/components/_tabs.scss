@@ -57,7 +57,7 @@
 
             &.active {
                 color: #fff;
-                background: #FFCA00;
+                background: #FFCB00;
                 &:hover {
                     color: #fff;
                 }
@@ -70,7 +70,7 @@
             &:hover {
                 color: inherit;
                 @media #{$large-and-up} {
-                    background: fade-out(#FFCA00, 0.4);
+                    background: fade-out(#FFCB00, 0.4);
                    // transform: translate(0,0);
                 }
             }

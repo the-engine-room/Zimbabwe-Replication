@@ -132,7 +132,7 @@
                         </a>
                     </li>
                     <li class="tab col">
-                        <a href="/#tab-1" class="ui-colors faded" data-view="minerals">
+                        <a href="/#tab-2" class="ui-colors faded" data-view="minerals">
                             <span>Browse by mineral</span>
                             <i class="material-icons">keyboard_arrow_right</i>
                         </a>

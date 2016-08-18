@@ -57,8 +57,8 @@
             additionalInfoHeader: $('.AdditionalInfo-header'),
             footer: $('.Footer'),
             templates: {
-                main: '.main-tpl',
-                extra: '.extra-tpl',
+                main: '.main-tpl', // This should get fed company names
+                extra: '.extra-tpl', // this should get mines for the company
                 licenceTable: '.licenceTable-tpl',
                 companyTable: '.companyTable-tpl',
                 ownedLicenses: '.ownedLicenses-tpl',
@@ -87,19 +87,25 @@
             filters: false
         },
         data: {
-            apiURL: 'https://namibmap.carto.com/api/v2/sql/?q=',
+            apiURL: 'https://miningpachena.carto.com/api/v2/sql/?q=',
             data: {},
             tabs: {
                 0: {
-                    name: 'licenses',
-                    sql: "SELECT * FROM na_licenses_operators_concessions",
-                    groupBy: 'license_id'
+                    name: 'companies',
+                    sql: "SELECT *, cartodb_id as company_id, name as company_name FROM zw_companies",
+                    groupBy: 'company_id'
                 },
                 1: {
-                    name: 'companies',
-                    sql: "SELECT * FROM na_license_operators",
-                    groupBy: 'company_id'
+                    name: 'mines',
+                    sql: "SELECT * FROM zw_mines",
+                    groupBy: 'cartodb_id'
+                },
+                2: {
+                    name: 'minerals',
+                    sql: "SELECT cartodb_id AS mineral_id, name FROM zw_minerals ORDER BY name ASC",
+                    groupBy: 'mineral_id'
                 }
+            
             },
         },
         map: {
@@ -196,7 +202,7 @@
                         IPPR.map.markers[key][k].isActive = false;
                     } else {
                         $(IPPR.map.markers[key][k]._icon).removeClass(IPPR.states.selected);
-                        IPPR.map.layers[key][k].setStyle(IPPR.map.styles.default);
+                        //IPPR.map.layers[key][k].setStyle(IPPR.map.styles.default);
                         IPPR.map.layers[key][k].isActive = true;
                         IPPR.map.markers[key][k].isActive = true;
                     }
@@ -235,7 +241,8 @@
             }
         }
     };
-
+    
+    
 
     /*
     ** Load the google chart sankey package
@@ -294,7 +301,7 @@
                         }
                         concessions += v.concessions + comma;
                     });
-
+                    
                     /*
                     ** ... parse the template for future use
                     */
@@ -305,10 +312,14 @@
                     */
                     if (tab.name === 'companies'){
                         title = value[0].company_name;
-                        id = k;
-                    } else {
-                        title = value[0].license_number;
-                        id = value[0].license_id;
+                        id = value[0].company_id;
+                    } else if (tab.name === 'minerals') {
+                        title = value[0].name;
+                        id = value[0].mineral_id;
+                    }
+                    else {
+                        title = value[0].name;
+                        id = value[0].cartodb_id;
                     }
 
                     /*
@@ -323,6 +334,8 @@
                         }
                     );
                 });
+                
+                
 
                 /*
                 ** ... append the data to the main lists in each tab
@@ -355,7 +368,7 @@
         /*
         ** ... get the geo json data
         */
-        $.getJSON('/data/na_license_concessions.geojson', function(data){
+        $.getJSON('/data/zm_mines.geojson', function(data){
 
             /*
             ** ... for each map in the dom initialize the maps and populate with layers and markers
@@ -406,25 +419,35 @@
                     */
                     layer.ID = feature.properties.license_id;
                     layer.company_id = feature.properties.operator_id;
-
+                    console.log(layer);
                     /*
                     ** ... push the layers for later use
                     */
                     IPPR.map.layers[key].push(layer);
-
+                    
                     /*
                     ** ... add labels to the polygons
                     */
+                    var marker = L.marker(
+                                        layer._latlng,
+                                        {
+                                            icon: L.divIcon({
+                                                    className: 'Map-label',
+                                                    html: '<span>' + layer.number + '</span>'
+                                                })                                            
+                                        }).addTo(IPPR.map.map[key]);
+/*
                     var marker = L.marker(layer.getBounds().getCenter(), {
                         icon: L.divIcon({
                             className: 'Map-label',
                             html: '<span>' + layer.number + '</span>'
                         })
                     }).addTo(IPPR.map.map[key]);
-
+*/
                     /*
                     ** ... push the labels for later use
                     */
+
                     IPPR.map.markers[key].push(marker);
 
                     /*
@@ -532,8 +555,8 @@
             */
             mustacheTpl = $(IPPR.dom.templates.licenceTable).html();
             Mustache.parse(mustacheTpl);
-
-            $.getJSON(IPPR.data.apiURL + "SELECT * FROM na_detailed_license_transfers WHERE license_id = " + item.data('id') + ' ORDER BY transfer_date&api_key=1393ddb863ac0c21094ec217476256a394c52444', function(data) {
+/*
+           $.getJSON(IPPR.data.apiURL + "SELECT * FROM na_detailed_license_transfers WHERE license_id = " + item.data('id') + ' ORDER BY transfer_date&api_key=6fce048c2d9eb832fb12e78b4252d18c7f0b2411', function(data) {
 
                 var sankeyData = [];
                 // [[ "Goverment of Namibia 100%", "Eco oil and gas 20%", 10, "20%"],[ "Eco oil and gas 20%", "Eco oil and gas 10%", 5, "10%" ],[ "Eco oil and gas 20%", "New Buyer 10%", 5, "10%" ],[ "Goverment of Namibia 100%", "Goverment of Namibia 80%", 8, "80%"]]
@@ -553,7 +576,7 @@
 
                     /*
                     ** ... draw sankey graph
-                    */
+                    */   /*
                     IPPR.sankey(sankeyData, IPPR.dom.sankey.mobile);
                     $(IPPR.dom.lists.info).find(IPPR.dom.table).html(finalTable);
                     IPPR.dom.additionalInfo.addClass(IPPR.states.hidden);
@@ -564,7 +587,7 @@
                 }
 
             });
-
+*/
             /*
             ** ... hide the company addition info because we are on licences
             */

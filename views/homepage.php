@@ -9,7 +9,7 @@
                     <i class="material-icons small prefix Search-trigger">search</i>
                     <i class="material-icons small prefix Search-remove">close</i>
                     <input id="search-tab-1" type="text" class="Search-input" />
-                    <label for="search-tab-1">Filter by licence</label>
+                    <label for="search-tab-1">Filter by Company name</label>
                 </div>
 
                 <!--div class="Filters">
@@ -35,7 +35,7 @@
                     <div class="List List--main z-depth-1" data-level="0">
                         <div class="List-header ui-colors green">
                             <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
-                            <span>Licenses <span class="List-count"></span></span>
+                            <span>Companies <span class="List-count"></span></span>
                         </div>
 
 
@@ -78,7 +78,7 @@
                         <div class="List-header ui-colors green">
                             <div class="List-headerActive">
                                 <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
-                                <span>Companies in ownership<span class="List-count"></span></span>
+                                <span>Mines<span class="List-count"></span></span>
                             </div>
                         </div>
 
@@ -87,7 +87,7 @@
 
                         <div class="List-holder">
                             <p class="List-headerInactive">
-                                Select a license on the left to see ownership information
+                                Select a company on the left to see the mines they own
                             </p>
                             <ul class="collection collapsible" data-collapsible="accordion">
                             </ul>
@@ -123,20 +123,15 @@
 
             </div>
 
-            <script type="x-tmpl-mustache" class="main-tpl">
+            
+
+
+            <script type="x-tmpl-mustache" class="main-tpl">                
                 <li class="collection-item" data-id="{{ id }}" data-sankey="{{ sankey }}" data-table="{{ table }}">
-                    <p class="List-title">{{ title }}</p>
-                    {{#concessionNumbers}}
-                        <span class="List-number brand blue">{{.}}</span>
-                    {{/concessionNumbers}}
-                    <span class="u-isHidden concessionNumbers">
-                        {{#concessionNumbers}}
-                            {{.}}
-                        {{/concessionNumbers}}
-                    </span>
-                    {{#expiration}}<span class="expiration u-isHidden">1</span>{{/expiration}}
+                    <p class="List-title">{{ title }}</p>                    
                 </li>
             </script>
+
 
             <script type="x-tmpl-mustache" class="extra-tpl">
                 <li{{#active}} class="active"{{/active}}>
@@ -162,6 +157,8 @@
                 </li>
             </script>
 
+
+            
         </div>
 
         <div id="tab-1" class="col s12 tab-content">
@@ -172,7 +169,7 @@
                     <i class="material-icons small prefix Search-trigger">search</i>
                     <i class="material-icons small prefix Search-remove">close</i>
                     <input id="search-tab-2" type="text" class="Search-input" />
-                    <label for="search-tab-2">Filter by Company name</label>
+                    <label for="search-tab-2">Filter by Mine</label>
                 </div>
 
                 <!--div class="Filters">
@@ -195,7 +192,7 @@
                     <div class="List List--main z-depth-1" data-level="0">
                         <div class="List-header ui-colors green">
                             <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
-                            <span>Companies <span class="List-count"></span></span>
+                            <span>Mines <span class="List-count"></span></span>
                         </div>
 
 
@@ -219,7 +216,7 @@
                                 <i class="material-icons small prefix Search-trigger">search</i>
                                 <i class="material-icons small prefix Search-remove">close</i>
                                 <input id="search-tab-1" type="text" class="Search-input" />
-                                <label for="search-tab-1">Filter by Company name</label>
+                                <label for="search-tab-1">Filter by Mine</label>
                             </div>
 
                         </div>
@@ -291,6 +288,137 @@
 
         </div>
 
+        
+        
+        <div id="tab-2" class="col s12 tab-content">
+
+            <div class="Search z-depth-1 hide-on-med-and-down ui-colors green">
+
+                <div class="input-field Search-field">
+                    <i class="material-icons small prefix Search-trigger">search</i>
+                    <i class="material-icons small prefix Search-remove">close</i>
+                    <input id="search-tab-3" type="text" class="Search-input" />
+                    <label for="search-tab-3">Filter by Mineral</label>
+                </div>
+
+                <!--div class="Filters">
+                    <ul class="Filters-list">
+                        <li class="Filters-item">
+                            <span class="chip Filters-itemFilter" data-filter="expiration">Foreign Owned</span>
+                        </li>
+                        <li class="Filters-item">
+                            <span class="chip Filters-itemFilter">Namibian Owned</span>
+                        </li>
+                    </ul>
+                </div-->
+
+            </div>
+
+            <div class="Data is-loading">
+
+                <div class="Data-holder">
+
+                    <div class="List List--main z-depth-1" data-level="0">
+                        <div class="List-header ui-colors green">
+                            <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
+                            <span>Minerals <span class="List-count"></span></span>
+                        </div>
+
+
+                        <div class="Search Search--mobile hide-on-large-only brand green">
+
+                            <!--div class="Filters Filters--mobile">
+                                <i class="material-icons small Filters-trigger js-dropdown-trigger" data-beloworigin="true" data-activates='filters2'>filter_list</i>
+                                <ul class="Filters-list z-depth-1" id="filters2">
+                                    <li class="Filters-item">
+                                        <span class="chip Filters-itemFilter" data-filter="expiration">Foreign Owned <i class="material-icons Filters-remove">close</i></span>
+                                    </li>
+                                    <li class="Filters-item">
+                                        <span class="chip Filters-itemFilter" data-filter="ownership">Namibian Owned <i class="material-icons Filters-remove">close</i></span>
+                                    </li>
+                                </ul>
+                            </div-->
+
+                            <div class="Filters-active"></div>
+
+                            <div class="input-field Search-field">
+                                <i class="material-icons small prefix Search-trigger">search</i>
+                                <i class="material-icons small prefix Search-remove">close</i>
+                                <input id="search-tab-3" type="text" class="Search-input" />
+                                <label for="search-tab-3">Filter by Mineral</label>
+                            </div>
+
+                        </div>
+
+                        <div class="List-holder">
+                            <ul class="collection">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="List List--extra z-depth-1 u-isHidden" data-level="1">
+                        <div class="List-header ui-colors green">
+                            <div class="List-headerActive">
+                                <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
+                                <span>Minerals <span class="List-count"></span></span>
+                            </div>
+                        </div>
+
+                        <div class="List-holder is-filterable">
+                            <p class="List-headerInactive">
+                                Select a mineral on the left to see mines
+                            </p>
+                            <ul class="collection collapsible" data-collapsible="accordion">
+                            </ul>
+                            <div class="Map Map--1 Map--inline companies hide-on-large-only"></div>
+                            <div class="Table row hide-on-large-only"></div>
+                            <div class="OwnedLicenses row hide-on-large-only"></div>
+                            <div class="Hierarchy row hide-on-large-only"></div>
+                            <a class="waves-effect waves-light btn orange hide-on-large-only Download-button"><i class="material-icons right">file_download</i>Download data</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="Map Map--1 companies"></div>
+
+
+                <div class="Loader">
+                    <div class="Loader-holder">
+                        <div class="preloader-wrapper big active"> <div class="spinner-layer spinner-blue-only"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <script type="x-tmpl-mustache" class="main-tpl">
+                <li class="collection-item" data-id="{{ id }}" data-table="{{table}}" data-hierarchy="{{ hierarchy }}" data-ownedLicenses="{{ ownedLicenses }}">
+                    <p class="List-title">{{ title }}</p>
+                </li>
+            </script>
+
+            <script type="x-tmpl-mustache" class="extra-tpl">
+                <li class="collection-item" data-id="{{ id }}">
+                    <p class="List-title List-title--full">{{ title }}</p>
+                    {{#concessionNumbers}}
+                        <span class="List-number brand blue">{{.}}</span>
+                    {{/concessionNumbers}}
+                    <span class="u-isHidden concessionNumbers">
+                        {{#concessionNumbers}}
+                            {{.}}
+                        {{/concessionNumbers}}
+                    </span>
+                    <p class="List-switch" data-to="licenses" data-id="{{ id }}"><i class="material-icons">info</i></p>
+                </li>
+            </script>
+
+
+        </div>
+        
+        
+        
         <div class="AdditionalInfo u-isHidden">
 
             <div class="AdditionalInfo-header ui-colors green u-cf">
