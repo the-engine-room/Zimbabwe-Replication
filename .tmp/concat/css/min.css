@@ -10934,7 +10934,7 @@ html.js .js-isHidden {
 
 .Header-tabs .tab a.active {
   color: #fff;
-  background: #FFCA00;
+  background: #FFCB00;
 }
 
 .Header-tabs .tab a.active:hover {
@@ -10947,7 +10947,7 @@ html.js .js-isHidden {
 
 @media only screen and (min-width: 993px) {
   .Header-tabs .tab a:hover {
-    background: rgba(255, 202, 0, 0.6);
+    background: rgba(255, 203, 0, 0.6);
   }
 }
 

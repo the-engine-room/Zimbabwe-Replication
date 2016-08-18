@@ -89,7 +89,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/min.9d0088e0.css">
+    <link rel="stylesheet" href="/css/min.dc13020c.css">
 
 </head>
 <body<?php if($match['name'] == 'homepage'){ echo ' class="App"'; } ?>>
@@ -130,7 +130,7 @@
                         </a>
                     </li>
                     <li class="tab col">
-                        <a href="/#tab-1" class="ui-colors faded" data-view="minerals">
+                        <a href="/#tab-2" class="ui-colors faded" data-view="minerals">
                             <span>Browse by mineral</span>
                             <i class="material-icons">keyboard_arrow_right</i>
                         </a>
@@ -204,7 +204,7 @@
     <script src="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
-    <script src="/js/min.9033021e.js"></script>
+    <script src="/js/min.e9caca47.js"></script>
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
