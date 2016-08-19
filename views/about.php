@@ -4,33 +4,16 @@
             <h1>An investigative platform for advocacy</h1>
 
 
-            <p>Transparent Oil Namibia enables you to map, find, browse, and search petroleum exploration licenses. You can find which companies hold licenses, who owns and manages these companies, where they’re registered, and how ownership has changed over time. You can also access licence and company information by clicking on the map.</p>
-
-            <p>The information on this platform is publicly available, but it was previously hard to access and use for advocacy without exhausting resources. Tracking license history in Namibia has often required sorting through hundreds of hardcopy pages of text. With improved accessibility to this data, you can more easily combat industry corruption and advocate for policy changes in Namibia.</p>
-
-            <blockquote>
-                “Such negative outcomes of resource extraction, commonly known as the resource curse.. can be countered by strong and unambiguous policies, accompanied by effective institutional structures.“ <a href="http://www.namibian.com.na/index.php?id=139106&page=archive-read">- The Namibian</a>
-            </blockquote>
-
-            <p>With a small group of public officials exercising discretionary decision-making powers, the current way petroleum exploration licences in Namibia are issued is opaque and open to abuse. Politically-connected owners receive concession rights which they can then sell at a higher price for their financial gain.</p>
-
-            <p>IPPR developed this platform to identify licensing patterns, red-flag corruption, and advocate for policy reform.</p>
+            <p>Mining Pachena Zimbabwe enables you to map, find, browse, and search mining company hierarchies, community monitoring reports on mining impacts and mineral revenue payments to government. You can trace relationships between child mining companies and their parent companies for easy access to integrated annual reports produced by listed companies, where they’re registered to check for companies domiciled in tax havens which are prone to Illicit Financial Flows (IFFs) or find out who manages these companies to check for Politically Exposed Persons (PEPs) or persons with corrupt track record, community pictures on mining impacts on human rights and community development and how much a company is paying to government. You can also access the data referred to by clicking on the map.</p>
+<p>The information on this platform is publicly available, but it was previously hard to access and use for advocacy without exhausting resources. Tracking integrated annual reports of listed mining companies has been a painstaking exercise as some mining companies operating in Zimbabwe are privately registered. Yet detailed reports on financial performance, taxes paid to government, production, corporate social investments can be accessed through searching for the parent company which consolidates reports of its various mining companies. With improved accessibility to this data, you can more easily combat industry corruption and advocate for practice and policy changes that ensure that all citizens enjoy their fair share of mineral wealth.</p>
+<blockquote>“The absence of composite mapping of the mining and mineral revenue information that is currently publicly available is partly the cause for continued debate and, to some extent, confusion around mining information disclosure. Without an understanding of the mining information disclosure landscape, the calls for transparency and accountability by various actors have lacked traction because of wide generalisations. This has, in turn, made it difficult to give succinct and actionable recommendations on how to improve transparency in the mining sector.” <br /> - SERA May 2015 Report Mineral Revenue Disclosure and Understanding the Information Needs of Various Stakeholders</blockquote>
+<p>For more information please contact us on:</p>
+infor@zela.org
+Emmanuel@zela.org
+Mukasiri@zela.org
 
             <div class="matchbox-box">
-              <p><strong>Transparent Oil Namibia is a project by the Institute for Public Policy Research (IPPR) with support from Matchbox by The Engine Room.</strong></p>
-
-              <div class="Block row">
-                <div class="col s4">
-                  <a href="http://www.ippr.org.na/" title="IPPR">
-                      <img src="/images/dist/ippr-small.png" alt="IPPR" />
-                  </a>
-                </div>
-                <div class="col s8">
-                  <p class="Block-title">
-                    <a href="http://www.ippr.org.na/">IPPR</a>
-                   delivers independent, analytical, critical yet constructive research into social, political, and economic issues that affect development in Namibia.</p>
-                </div>
-              </div>
+              
 
 
               <div class="Block row">
