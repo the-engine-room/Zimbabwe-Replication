@@ -214,8 +214,10 @@
                     }
                 });
 
-                var size = $(IPPR.dom.lists.main+':visible').find('.collection-item').size();
-                $(IPPR.dom.lists.main).find(IPPR.dom.lists.count).html('('+size+')');
+                setTimeout(function(){
+                    var size = $(IPPR.dom.lists.main+':visible').find('.collection-item').size();
+                    $(IPPR.dom.lists.main).find(IPPR.dom.lists.count).html('('+size+')');
+                },50);
 
             }
         },
@@ -361,6 +363,7 @@
             $.each(IPPR.dom.map, function(key,val){
 
                 var that = $(val);
+
 
                 IPPR.map.layers[key] = [];
                 IPPR.map.markers[key] = [];
@@ -516,9 +519,13 @@
         IPPR.states.view = view;
 
         $('a[data-view="'+view+'"]').click();
-        $('.collection-item[data-id="'+id+'"]').click();
-        var top = $('.collection-item[data-id="'+id+'"]').position().top;
-        $(IPPR.dom.lists.main).find(IPPR.dom.lists.holder).scrollTop(top);
+
+        setTimeout(function(){
+            $('.collection-item[data-id="'+id+'"]').click();
+            var top = $('.collection-item[data-id="'+id+'"]').position().top;
+            $(IPPR.dom.lists.main).find(IPPR.dom.lists.holder).scrollTop(top);
+        },100);
+
     });
 
     /*
