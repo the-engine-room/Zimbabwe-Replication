@@ -65,7 +65,7 @@
                 hierarchy: '.hierarchy-tpl'
             },
             additionalInfoStrings: {
-                licence: 'Transaction history for Licence number <span></span>',
+                licence: 'Info for Licence number <span></span>',
                 company: 'Additional information'
             },
             ownedLicenses: '.OwnedLicenses',
@@ -81,8 +81,8 @@
             selected: 'is-selected',
             mobile: false,
             desktop: false,
-            view: 'licenses',
-            hightlight: 'licenses',
+            view: 'companies',
+            hightlight: 'companies',
             map: false,
             filters: false
         },
@@ -92,18 +92,18 @@
             tabs: {
                 0: {
                     name: 'companies',
-                    sql: "SELECT *, cartodb_id as company_id, name as company_name FROM zw_companies",
+                    sql: "SELECT m.cartodb_id AS mine_id, m.name AS mine_name, m.district AS mine_district, m.region as mine_region, m.status as mine_status, c.cartodb_id AS company_id, c.name AS company_name, c.address AS company_address, c.hq AS company_hq, c.jurisdiction AS company_jurisdiction, c.registration AS company_registration, c.website AS company_website FROM zw_companies c, zw_company_mines cm, zw_mines m WHERE c.cartodb_id = cm.company_id AND cm.mine_id = m.cartodb_id",
                     groupBy: 'company_id'
                 },
                 1: {
                     name: 'mines',
-                    sql: "SELECT * FROM zw_mines",
-                    groupBy: 'cartodb_id'
+                    sql: "SELECT m.cartodb_id AS mine_id, m.name AS mine_name, m.district AS mine_district, m.region as mine_region, m.status as mine_status, c.cartodb_id AS company_id, c.name AS company_name, c.address AS company_address, c.hq AS company_hq, c.jurisdiction AS company_jurisdiction, c.registration AS company_registration, c.website AS company_website FROM zw_companies c, zw_company_mines cm, zw_mines m WHERE c.cartodb_id = cm.company_id AND cm.mine_id = m.cartodb_id",
+                    groupBy: 'mine_id'
                 },
                 2: {
                     name: 'minerals',
-                    sql: "SELECT cartodb_id AS mineral_id, name FROM zw_minerals ORDER BY name ASC",
-                    groupBy: 'mineral_id'
+                    sql: "SELECT mns.district AS mine_district, mns.name AS mine_name, mns.region AS mine_region, mns.status AS mine_status, mls.name AS mineral FROM zw_mines mns, zw_mine_minerals mm, zw_minerals mls WHERE mns.cartodb_id = mm.mine_id AND mm.mineral_id = mls.cartodb_id",
+                    groupBy: 'mineral'
                 }
 
             }
@@ -114,6 +114,7 @@
             markers: [],
             styles: {
                 default: {
+                    radius: 8,
                     weight: 1,
                     fill: true,
                     fillColor: '#5E8FB1',
@@ -122,6 +123,7 @@
                     fillOpacity: 1
                 },
                 active: {
+                    radius: 8,
                     weight: 2,
                     fill: true,
                     fillColor: '#256A9A',
@@ -130,6 +132,7 @@
                     fillOpacity: 1
                 },
                 filtered: {
+                    radius: 8,
                     weight: 3,
                     fill: true,
                     fillColor: '#93B4CB',
@@ -142,6 +145,8 @@
 
                 $.each(IPPR.map.layers[key], function (k, value) {
 
+                    // IPPR.map.layers[key][k].closePopup();
+
                     if (!IPPR.states.filters) {
                         IPPR.map.layers[key][k].setStyle(IPPR.map.styles.default);
                         $(IPPR.map.markers[key][k]._icon).removeClass(IPPR.states.active);
@@ -150,8 +155,9 @@
                         IPPR.map.markers[key][k].isActive = false;
                     }
 
-                    if (IPPR.states.highlight === 'licenses' && value.ID === id || IPPR.states.highlight === 'companies' && value.company_id === id) {
+                    if (IPPR.states.highlight === 'mines' && value.ID === id || IPPR.states.highlight === 'companies' && value.company_id === id) {
                         IPPR.map.layers[key][k].setStyle(IPPR.map.styles.active);
+                        // IPPR.map.layers[key][k].openPopup();
                         IPPR.map.layers[key][k].bringToFront();
                         IPPR.map.layers[key][k].isActive = true;
                         IPPR.map.markers[key][k].isActive = true;
@@ -182,7 +188,7 @@
                     IPPR.map.resetLayers();
                 }
 
-                var key = type === 'licenses' ? 0 : 2,
+                var key = type === 'mines' ? 0 : 2,
                     listItems = $(IPPR.dom.lists.main + ':visible').find('.collection-item'),
                     ids = [];
 
@@ -191,7 +197,7 @@
                 });
 
                 $.each(IPPR.map.layers[key], function (k, v) {
-                    if (IPPR.states.view === 'licenses' && $.inArray(v.ID, ids) < 0 || IPPR.states.view === 'companies' && $.inArray(v.company_id, ids) < 0) {
+                    if (IPPR.states.view === 'mines' && $.inArray(v.ID, ids) < 0 || IPPR.states.view === 'companies' && $.inArray(v.company_id, ids) < 0) {
                         IPPR.map.layers[key][k].setStyle(IPPR.map.styles.filtered);
                         $(IPPR.map.markers[key][k]._icon).removeClass(IPPR.states.active);
                         $(IPPR.map.markers[key][k]._icon).removeClass(IPPR.states.selected);
@@ -239,11 +245,6 @@
     };
 
     /*
-    ** Load the google chart sankey package
-    */
-    google.charts.load('current', { 'packages': ['sankey'] });
-
-    /*
     ** Set / remove loading classes while the data loads
     */
     IPPR.loading = function () {
@@ -284,20 +285,6 @@
                 $.each(IPPR.data.data[key], function (k, value) {
 
                     /*
-                    ** ... set up conncession data
-                    */
-                    var concessions = '',
-                        comma = '';
-                    $.each(value, function (k, v) {
-                        if (k + 1 < value.length) {
-                            comma = ',';
-                        } else {
-                            comma = '';
-                        }
-                        concessions += v.concessions + comma;
-                    });
-
-                    /*
                     ** ... parse the template for future use
                     */
                     Mustache.parse(mustacheTpl[key]);
@@ -309,11 +296,11 @@
                         title = value[0].company_name;
                         id = value[0].company_id;
                     } else if (tab.name === 'minerals') {
-                        title = value[0].name;
-                        id = value[0].mineral_id;
+                        title = k;
+                        id = k;
                     } else {
-                        title = value[0].name;
-                        id = value[0].cartodb_id;
+                        title = value[0].mine_name;
+                        id = value[0].mine_id;
                     }
 
                     /*
@@ -322,8 +309,7 @@
                     markup[key] += Mustache.render(mustacheTpl[key], {
                         title: title,
                         id: id,
-                        expiration: expiration,
-                        concessionNumbers: concessions ? concessions.split(',') : false
+                        expiration: expiration
                     });
                 });
 
@@ -354,7 +340,7 @@
         /*
         ** ... get the geo json data
         */
-        $.getJSON('/data/zm_mines.geojson', function (data) {
+        $.getJSON('/data/zw_mines.geojson', function (data) {
 
             /*
             ** ... for each map in the dom initialize the maps and populate with layers and markers
@@ -366,13 +352,25 @@
                 IPPR.map.layers[key] = [];
                 IPPR.map.markers[key] = [];
 
+                /***  little hack starts here ***/
+                L.Map = L.Map.extend({
+                    openPopup: function openPopup(popup) {
+                        //        this.closePopup();  // just comment this
+                        this._popup = popup;
+
+                        return this.addLayer(popup).fire('popupopen', {
+                            popup: this._popup
+                        });
+                    }
+                }); /***  end of hack ***/
+
                 /*
                 ** ... init map
                 */
                 IPPR.map.map[key] = L.map($('.Map').eq(key)[0], {
                     scrollWheelZoom: false,
                     zoomControl: false
-                }).setView([-18.997, 20.908], 6); // map centering
+                }).setView([-18.997, 23.908], 7); // map centering
 
                 /*
                 ** ... change zoom controls to be in the bottom right corner
@@ -403,9 +401,15 @@
                     /*
                     ** ... extra data
                     */
-                    layer.ID = feature.properties.license_id;
-                    layer.company_id = feature.properties.operator_id;
-                    console.log(layer);
+                    layer.ID = feature.properties.cartodb_id;
+                    layer.company_id = feature.properties.company_id;
+
+                    if (feature.properties && feature.properties.popupContent) {
+                        layer.bindPopup(feature.properties.popupContent);
+                    } else {
+                        layer.bindPopup('<ul class="Map-popup"><li><strong>Name:</strong> ' + feature.properties.name + '</li><li><strong>Region:</strong> ' + feature.properties.region + '</li><li><strong>District:</strong> ' + feature.properties.district + '</li><li><strong>Status:</strong> ' + feature.properties.status + '</li></ul>');
+                    }
+
                     /*
                     ** ... push the layers for later use
                     */
@@ -416,18 +420,9 @@
                     */
                     var marker = L.marker(layer._latlng, {
                         icon: L.divIcon({
-                            className: 'Map-label',
-                            html: '<span>' + layer.number + '</span>'
+                            className: 'Map-label'
                         })
                     }).addTo(IPPR.map.map[key]);
-                    /*
-                                        var marker = L.marker(layer.getBounds().getCenter(), {
-                                            icon: L.divIcon({
-                                                className: 'Map-label',
-                                                html: '<span>' + layer.number + '</span>'
-                                            })
-                                        }).addTo(IPPR.map.map[key]);
-                    */
                     /*
                     ** ... push the labels for later use
                     */
@@ -454,17 +449,19 @@
                             IPPR.dom.filters.searchRemove.click();
                         }
 
+                        console.log(feature);
+
                         /*
                         ** ... click the item in the main list, scroll list to the top
                         */
                         var elem, top;
-                        if (that.is('.licenses')) {
+                        if (that.is('.mines')) {
                             elem = $(IPPR.dom.lists.main).find('li[data-id="' + feature.properties.license_id + '"]');
                             elem.click();
                             top = elem.position().top;
                             $(IPPR.dom.lists.main).find(IPPR.dom.lists.holder).scrollTop(top);
                         } else if (that.is('.companies')) {
-                            elem = $(IPPR.dom.lists.main).find('li[data-id="' + feature.properties.operator_id + '"]');
+                            elem = $(IPPR.dom.lists.main).find('li[data-id="' + feature.properties.company_id + '"]');
                             elem.click();
                             top = elem.position().top;
                             $(IPPR.dom.lists.main).find(IPPR.dom.lists.holder).scrollTop(top);
@@ -482,7 +479,9 @@
                 ** ... parse the geojson data and add it to the map
                 */
                 L.geoJson([data], {
-                    style: IPPR.map.styles.default,
+                    pointToLayer: function pointToLayer(feature, latlng) {
+                        return L.circleMarker(latlng, IPPR.map.styles.default);
+                    },
                     onEachFeature: onEachLayer
                 }).addTo(IPPR.map.map[key]);
             });
@@ -514,7 +513,7 @@
         /*
         ** ... if this is licence
         */
-        if (type === 'licence') {
+        if (type === 'mine') {
 
             /*
             ** ... append the title, change the background color
@@ -579,7 +578,6 @@
             } else {
                 IPPR.dom.additionalInfo.removeClass(IPPR.states.hidden);
                 IPPR.dom.additionalInfo.find('.AdditionalInfo-title span').html(title);
-                $(IPPR.dom.sankey.desktop).removeClass(IPPR.states.hidden);
             }
         } else {
             /*
@@ -589,10 +587,9 @@
             $(IPPR.dom.additionalInfoTitle).html(IPPR.dom.additionalInfoStrings[type]);
             $(IPPR.dom.additionalInfoHeader).removeClass('blue').addClass('green');
 
-            $(IPPR.dom.sankey.desktop).addClass(IPPR.states.hidden);
             IPPR.dom.additionalInfo.removeClass(IPPR.states.hidden);
 
-            tableData = IPPR.data.data[1][item.data('id')][0];
+            tableData = IPPR.data.data[0][item.data('id')][0];
             // ownedLicenses = item.data('ownedlicenses');
 
             mustacheTpl = $(IPPR.dom.templates.companyTable).html();
@@ -618,7 +615,7 @@
             ** SELECT * FROM na_people WHERE company_id = 6 ORDER BY name ASC
             */
 
-            $.getJSON('https://namibmap.carto.com/api/v2/sql/?q=SELECT * FROM na_people WHERE company_id = ' + item.data('id'), function (data) {
+            $.getJSON('https://miningpachena.carto.com/api/v2/sql/?q=SELECT * FROM zw_people WHERE company_id = ' + item.data('id'), function (data) {
 
                 finalHierarchy = Mustache.render(hierarchyTpl, {
                     hierarchy: data.rows
@@ -691,7 +688,7 @@
 
             IPPR.states.view = $(this).data('view');
 
-            if (IPPR.states.view === 'licenses') {
+            if (IPPR.states.view === 'mines') {
                 IPPR.dom.mapTrigger.addClass(IPPR.states.active);
             } else {
                 IPPR.dom.map.removeClass(IPPR.states.visible);
@@ -719,7 +716,7 @@
                 } else if (level === 1) {
                     // 1st list
                     IPPR.dom.dataHolder.css({ transform: 'translate(0,0)' });
-                    if (IPPR.states.view === 'licenses') {
+                    if (IPPR.states.view === 'mines') {
                         IPPR.dom.mapTrigger.addClass(IPPR.states.active);
                     }
                     IPPR.dom.map.removeClass(IPPR.states.hidden);
@@ -826,7 +823,7 @@
 
                 if (IPPR.states.mobile) {
                     IPPR.dom.dataHolder.css({ transform: 'translate(-33.3333%,0)' });
-                    if (IPPR.states.view === 'licenses') {
+                    if (IPPR.states.view === 'mines') {
                         IPPR.dom.map.addClass(IPPR.states.hidden);
                     } else {
                         IPPR.dom.mapInline.removeClass(IPPR.states.hidden);
@@ -843,20 +840,24 @@
 
                     if (IPPR.states.view === 'companies') {
                         IPPR.states.highlight = 'companies';
+                    } else if (IPPR.states.view === 'mines') {
+                        IPPR.states.highlight = 'mines';
                     } else {
-                        IPPR.states.highlight = 'licenses';
+                        IPPR.states.highlight = 'minerals';
                     }
 
                     if (IPPR.states.desktop) {
 
-                        if (IPPR.states.view === 'licenses') {
-                            IPPR.displayAdditionalInfo($(this), 'licence');
+                        if (IPPR.states.view === 'mines') {
+                            IPPR.displayAdditionalInfo($(this), 'mine');
+                        } else if (IPPR.states.view === 'minerals') {
+                            IPPR.displayAdditionalInfo($(this), 'minerals');
                         } else {
                             IPPR.displayAdditionalInfo($(this), 'company');
                         }
                     } else {
                         $(this).closest(IPPR.dom.lists.holder).addClass(IPPR.states.hidden);
-                        if (IPPR.states.view !== 'licenses') {
+                        if (IPPR.states.view !== 'mines') {
                             IPPR.displayAdditionalInfo($(this), 'company');
                         }
                     }
@@ -883,25 +884,13 @@
                     if (IPPR.states.view === 'companies') {
                         size = 0;
 
-                        $.each(IPPR.helpers.groupBy(companies, 'license_number'), function (k, value) {
-
-                            var concessions = '',
-                                comma = '';
-                            $.each(value, function (k, v) {
-                                if (k + 1 < value.length) {
-                                    comma = ',';
-                                } else {
-                                    comma = '';
-                                }
-                                concessions += v.concessions + comma;
-                            });
+                        $.each(IPPR.helpers.groupBy(companies, 'mine_id'), function (k, value) {
 
                             Mustache.parse(mustacheTpl[key]);
 
                             markup[key] += Mustache.render(mustacheTpl[key], {
-                                title: k,
-                                id: value[0].license_id,
-                                concessionNumbers: concessions ? concessions.split(',') : false
+                                mine_name: k,
+                                minesInfo: value[0]
                             });
 
                             size++;
@@ -931,7 +920,7 @@
 
                     IPPR.map.map[key].invalidateSize();
                 } else {
-                    IPPR.states.highlight = 'licenses';
+                    IPPR.states.highlight = 'mines';
                 }
 
                 if (IPPR.states.desktop) {

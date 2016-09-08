@@ -78,11 +78,9 @@
                         <div class="List-header ui-colors green">
                             <div class="List-headerActive">
                                 <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
-                                <span>Mines<span class="List-count"></span></span>
+                                <span>Mines <span class="List-count"></span></span>
                             </div>
                         </div>
-
-                        <a class="List-infoLink orange js-showAdditionalInfo hide-on-large-only"><i class="material-icons right">arrow_right</i>Transaction history</a>
 
 
                         <div class="List-holder">
@@ -98,14 +96,10 @@
                         <div class="List-header ui-colors green">
                             <div class="List-headerActive">
                                 <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
-                                <span>Transaction history for <span class="List-infoName"></span></span>
                             </div>
                         </div>
 
                         <div class="List-holder">
-                            <div class="Sankey">
-                                <div class="Sankey-mobile"></div>
-                            </div>
                             <div class="Table row"></div>
                             <a class="waves-effect waves-light btn orange Download-button"><i class="material-icons right">file_download</i>Download data</a>
                         </div>
@@ -113,7 +107,7 @@
 
                 </div>
 
-                <div class="Map Map--0 licenses"></div>
+                <div class="Map Map--0 companies"></div>
 
                 <div class="Loader">
                     <div class="Loader-holder">
@@ -123,42 +117,39 @@
 
             </div>
 
-            
 
 
-            <script type="x-tmpl-mustache" class="main-tpl">                
-                <li class="collection-item" data-id="{{ id }}" data-sankey="{{ sankey }}" data-table="{{ table }}">
-                    <p class="List-title">{{ title }}</p>                    
+
+            <script type="x-tmpl-mustache" class="main-tpl">
+                <li class="collection-item" data-id="{{ id }}" data-table="{{ table }}">
+                    <p class="List-title">{{ title }}</p>
                 </li>
             </script>
 
 
             <script type="x-tmpl-mustache" class="extra-tpl">
                 <li{{#active}} class="active"{{/active}}>
-                    {{#companyInfo}}
+                    {{#minesInfo}}
                         <div class="collapsible-header{{#active}} active{{/active}}">
-                            <div class="List-title">{{ company_name }}</div>
+                            <div class="List-title">{{ mine_name }}</div>
                             <i class="material-icons">keyboard_arrow_down</i>
                         </div>
                         <div class="collapsible-body"{{#active}} style="display: block;"{{/active}}>
 
                             <ul>
                                 <li>
-                                    <p><strong>Address:</strong> {{company_address}}{{^company_address}}<i>unknown</i>{{/company_address}}</p>
-                                    <p><strong>Jurisdiction:</strong> {{company_jurisdiction}}{{^company_jurisdiction}}<i>unknown</i>{{/company_jurisdiction}}</p>
-                                    <p><strong>Headquarters:</strong> {{company_hq}}{{^company_hq}}<i>unknown</i>{{/company_hq}}</p>
-                                    <p><strong>Formed on:</strong> {{company_formed}}{{^company_formed}}<i>unknown</i>{{/company_formed}}</p>
-                                    <p><strong>Website:</strong> <a href="{{company_website}}">{{company_website}}{{^company_website}}<i>unknown</i>{{/company_website}}</a></p>
+                                    <p><strong>Mine region:</strong> {{mine_region}}{{^mine_region}}<i>unknown</i>{{/mine_region}}</p>
+                                    <p><strong>Mine status:</strong> {{mine_status}}{{^mine_status}}<i>unknown</i>{{/mine_status}}</p>
                                 </li>
                             </ul>
-                            <p class="List-switch" data-to="companies" data-id="{{ company_id }}"><i class="material-icons">info</i></p>
+                            <p class="List-switch" data-to="mines" data-id="{{ mine_id }}"><i class="material-icons">info</i></p>
                         </div>
-                    {{/companyInfo}}
+                    {{/minesInfo}}
                 </li>
             </script>
 
 
-            
+
         </div>
 
         <div id="tab-1" class="col s12 tab-content">
@@ -232,13 +223,13 @@
                         <div class="List-header ui-colors green">
                             <div class="List-headerActive">
                                 <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
-                                <span>Licenses in ownership <span class="List-count"></span></span>
+                                <span>Companies in ownership <span class="List-count"></span></span>
                             </div>
                         </div>
 
                         <div class="List-holder is-filterable">
                             <p class="List-headerInactive">
-                                Select a company on the left to see licenses information
+                                Select a mine on the left to see company information
                             </p>
                             <ul class="collection collapsible" data-collapsible="accordion">
                             </ul>
@@ -252,7 +243,7 @@
 
                 </div>
 
-                <div class="Map Map--1 companies"></div>
+                <div class="Map Map--1 mines"></div>
 
 
                 <div class="Loader">
@@ -271,25 +262,34 @@
             </script>
 
             <script type="x-tmpl-mustache" class="extra-tpl">
-                <li class="collection-item" data-id="{{ id }}">
-                    <p class="List-title List-title--full">{{ title }}</p>
-                    {{#concessionNumbers}}
-                        <span class="List-number brand blue">{{.}}</span>
-                    {{/concessionNumbers}}
-                    <span class="u-isHidden concessionNumbers">
-                        {{#concessionNumbers}}
-                            {{.}}
-                        {{/concessionNumbers}}
-                    </span>
-                    <p class="List-switch" data-to="licenses" data-id="{{ id }}"><i class="material-icons">info</i></p>
+                <li{{#active}} class="active"{{/active}}>
+                    {{#companyInfo}}
+                        <div class="collapsible-header{{#active}} active{{/active}}">
+                            <div class="List-title">{{ company_name }}</div>
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </div>
+                        <div class="collapsible-body"{{#active}} style="display: block;"{{/active}}>
+
+                            <ul>
+                                <li>
+                                    <p><strong>Address:</strong> {{company_address}}{{^company_address}}<i>unknown</i>{{/company_address}}</p>
+                                    <p><strong>Jurisdiction:</strong> {{company_jurisdiction}}{{^company_jurisdiction}}<i>unknown</i>{{/company_jurisdiction}}</p>
+                                    <p><strong>Headquarters:</strong> {{company_hq}}{{^company_hq}}<i>unknown</i>{{/company_hq}}</p>
+                                    <p><strong>Formed on:</strong> {{company_formed}}{{^company_formed}}<i>unknown</i>{{/company_formed}}</p>
+                                    <p><strong>Website:</strong> <a href="{{company_website}}">{{company_website}}{{^company_website}}<i>unknown</i>{{/company_website}}</a></p>
+                                </li>
+                            </ul>
+                            <p class="List-switch" data-to="companies" data-id="{{ company_id }}"><i class="material-icons">info</i></p>
+                        </div>
+                    {{/companyInfo}}
                 </li>
             </script>
 
 
         </div>
 
-        
-        
+
+
         <div id="tab-2" class="col s12 tab-content">
 
             <div class="Search z-depth-1 hide-on-med-and-down ui-colors green">
@@ -361,7 +361,7 @@
                         <div class="List-header ui-colors green">
                             <div class="List-headerActive">
                                 <span class="hide-on-large-only List-back"><i class="material-icons">keyboard_arrow_left</i></span>
-                                <span>Minerals <span class="List-count"></span></span>
+                                <span>Mines <span class="List-count"></span></span>
                             </div>
                         </div>
 
@@ -416,9 +416,9 @@
 
 
         </div>
-        
-        
-        
+
+
+
         <div class="AdditionalInfo u-isHidden">
 
             <div class="AdditionalInfo-header ui-colors green u-cf">
@@ -430,10 +430,6 @@
             </div>
 
             <div class="row AdditionalInfo-data">
-
-                <div class="col s12">
-                    <div class="Sankey Sankey-desktop"></div>
-                </div>
 
                 <div class="col s12">
                     <div class="Table"></div>
