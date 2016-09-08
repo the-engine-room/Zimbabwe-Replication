@@ -102,7 +102,7 @@
                 },
                 2: {
                     name: 'minerals',
-                    sql: "SELECT mns.district AS mine_district, mns.name AS mine_name, mns.region AS mine_region, mns.status AS mine_status, mls.name AS mineral FROM zw_mines mns, zw_mine_minerals mm, zw_minerals mls WHERE mns.cartodb_id = mm.mine_id AND mm.mineral_id = mls.cartodb_id",
+                    sql: "SELECT mns.cartodb_id as mine_id, mns.district AS mine_district, mns.name AS mine_name, mns.region AS mine_region, mns.status AS mine_status, mls.name AS mineral FROM zw_mines mns, zw_mine_minerals mm, zw_minerals mls WHERE mns.cartodb_id = mm.mine_id AND mm.mineral_id = mls.cartodb_id",
                     groupBy: 'mineral'
                 }
 
@@ -145,7 +145,7 @@
 
                 $.each(IPPR.map.layers[key], function (k, value) {
 
-                    // IPPR.map.layers[key][k].closePopup();
+                    IPPR.map.layers[key][k].closePopup();
 
                     if (!IPPR.states.filters) {
                         IPPR.map.layers[key][k].setStyle(IPPR.map.styles.default);
@@ -157,7 +157,7 @@
 
                     if (IPPR.states.highlight === 'mines' && value.ID === id || IPPR.states.highlight === 'companies' && value.company_id === id) {
                         IPPR.map.layers[key][k].setStyle(IPPR.map.styles.active);
-                        // IPPR.map.layers[key][k].openPopup();
+                        IPPR.map.layers[key][k].openPopup();
                         IPPR.map.layers[key][k].bringToFront();
                         IPPR.map.layers[key][k].isActive = true;
                         IPPR.map.markers[key][k].isActive = true;
@@ -188,7 +188,7 @@
                     IPPR.map.resetLayers();
                 }
 
-                var key = type === 'mines' ? 0 : 2,
+                var key = type === 'companies' ? 0 : 2,
                     listItems = $(IPPR.dom.lists.main + ':visible').find('.collection-item'),
                     ids = [];
 
@@ -198,14 +198,16 @@
 
                 $.each(IPPR.map.layers[key], function (k, v) {
                     if (IPPR.states.view === 'mines' && $.inArray(v.ID, ids) < 0 || IPPR.states.view === 'companies' && $.inArray(v.company_id, ids) < 0) {
+
                         IPPR.map.layers[key][k].setStyle(IPPR.map.styles.filtered);
+
                         $(IPPR.map.markers[key][k]._icon).removeClass(IPPR.states.active);
                         $(IPPR.map.markers[key][k]._icon).removeClass(IPPR.states.selected);
                         IPPR.map.layers[key][k].isActive = false;
                         IPPR.map.markers[key][k].isActive = false;
                     } else {
                         $(IPPR.map.markers[key][k]._icon).removeClass(IPPR.states.selected);
-                        //IPPR.map.layers[key][k].setStyle(IPPR.map.styles.default);
+                        IPPR.map.layers[key][k].setStyle(IPPR.map.styles.default);
                         IPPR.map.layers[key][k].isActive = true;
                         IPPR.map.markers[key][k].isActive = true;
                     }
@@ -449,8 +451,6 @@
                             IPPR.dom.filters.searchRemove.click();
                         }
 
-                        console.log(feature);
-
                         /*
                         ** ... click the item in the main list, scroll list to the top
                         */
@@ -579,7 +579,7 @@
                 IPPR.dom.additionalInfo.removeClass(IPPR.states.hidden);
                 IPPR.dom.additionalInfo.find('.AdditionalInfo-title span').html(title);
             }
-        } else {
+        } else if (type === 'company') {
             /*
             ** ... if this is company, get the data and append to the DOM
             */
@@ -637,7 +637,9 @@
                 IPPR.dom.additionalInfo.find(IPPR.dom.table).html(finalTable).removeClass(IPPR.states.hidden);
                 // IPPR.dom.additionalInfo.find('.OwnedLicenses').html(finalownedLicenses).removeClass(IPPR.states.hidden);
             }
-        }
+        } else {// minerals
+
+            }
     };
 
     // Mobile behaviour of the app
@@ -862,12 +864,15 @@
                         }
                     }
 
-                    var companies = [];
+                    var companies = [],
+                        minerals = [];
 
                     $.each(IPPR.data.data[key][id], function (k, company) {
 
                         if (IPPR.states.view === 'companies') {
                             companies.push(company);
+                        } else if (IPPR.states.view === 'minerals') {
+                            minerals.push(company);
                         } else {
 
                             Mustache.parse(mustacheTpl[key]);
@@ -882,7 +887,6 @@
                     });
 
                     if (IPPR.states.view === 'companies') {
-                        size = 0;
 
                         $.each(IPPR.helpers.groupBy(companies, 'mine_id'), function (k, value) {
 
@@ -892,8 +896,33 @@
                                 mine_name: k,
                                 minesInfo: value[0]
                             });
+                        });
 
-                            size++;
+                        if (IPPR.states.mobile) {
+                            $.each(IPPR.map.markers[key], function (index, val) {
+                                val.off('click');
+                            });
+
+                            $.each(IPPR.map.layers[key], function (index, val) {
+                                val.off('click');
+                            });
+
+                            $.each(IPPR.map.map, function (k, v) {
+                                v.dragging.disable();
+                            });
+                        }
+                    }
+
+                    if (IPPR.states.view === 'minerals') {
+
+                        $.each(IPPR.helpers.groupBy(minerals, 'mineral'), function (k, value) {
+
+                            Mustache.parse(mustacheTpl[key]);
+
+                            markup[key] += Mustache.render(mustacheTpl[key], {
+                                mine_name: k,
+                                minesInfo: value
+                            });
                         });
 
                         if (IPPR.states.mobile) {

@@ -399,19 +399,25 @@
                 </li>
             </script>
 
-            <script type="x-tmpl-mustache" class="extra-tpl">
-                <li class="collection-item" data-id="{{ id }}">
-                    <p class="List-title List-title--full">{{ title }}</p>
-                    {{#concessionNumbers}}
-                        <span class="List-number brand blue">{{.}}</span>
-                    {{/concessionNumbers}}
-                    <span class="u-isHidden concessionNumbers">
-                        {{#concessionNumbers}}
-                            {{.}}
-                        {{/concessionNumbers}}
-                    </span>
-                    <p class="List-switch" data-to="licenses" data-id="{{ id }}"><i class="material-icons">info</i></p>
-                </li>
+           <script type="x-tmpl-mustache" class="extra-tpl">
+                {{#minesInfo}}
+                    <li{{#active}} class="active"{{/active}}>
+                        <div class="collapsible-header{{#active}} active{{/active}}">
+                            <div class="List-title">{{ mine_name }}</div>
+                            <i class="material-icons">keyboard_arrow_down</i>
+                        </div>
+                        <div class="collapsible-body"{{#active}} style="display: block;"{{/active}}>
+
+                            <ul>
+                                <li>
+                                    <p><strong>Mine region:</strong> {{mine_region}}{{^mine_region}}<i>unknown</i>{{/mine_region}}</p>
+                                    <p><strong>Mine status:</strong> {{mine_status}}{{^mine_status}}<i>unknown</i>{{/mine_status}}</p>
+                                </li>
+                            </ul>
+                            <p class="List-switch" data-to="mines" data-id="{{ mine_id }}"><i class="material-icons">info</i></p>
+                        </div>
+                    </li>
+                {{/minesInfo}}
             </script>
 
 
