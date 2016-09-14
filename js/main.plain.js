@@ -143,10 +143,17 @@
             },
             highlightLayer: function highlightLayer(key, id) {
 
+                // collect mine ids for mineral highliting 
+                if (IPPR.states.highlight === 'minerals') {
+                    var minesIds = [];
+                    $.each($('p.List-switch'), function (index, element) {
+                        minesIds.push($(element).data('id'));
+                    });
+                }
+
                 $.each(IPPR.map.layers[key], function (k, value) {
 
                     IPPR.map.layers[key][k].closePopup();
-
                     if (!IPPR.states.filters) {
                         IPPR.map.layers[key][k].setStyle(IPPR.map.styles.default);
                         $(IPPR.map.markers[key][k]._icon).removeClass(IPPR.states.active);
@@ -155,9 +162,22 @@
                         IPPR.map.markers[key][k].isActive = false;
                     }
 
-                    if (IPPR.states.highlight === 'mines' && value.ID === id || IPPR.states.highlight === 'companies' && value.company_id === id) {
+                    if (IPPR.states.highlight === 'mines' && value.ID === id || IPPR.states.highlight === 'minerals' && minesIds.indexOf(value.ID) >= 0 || IPPR.states.highlight === 'companies' && value.company_id === id) {
+
+                        /*    
+                        if(IPPR.states.highlight === 'minerals'){
+                            console.log('-- INIT DEBUG ---');
+                            console.log('value.ID: ' + value.ID);
+                            console.log('value.cartodb_id: ' + value.cartodb_id);
+                            console.log(minesIds);
+                            console.log(minesIds.indexOf(value.cartodb_id));
+                            console.log('--- EOF DEBUG ---');
+                        }
+                        */
+
                         IPPR.map.layers[key][k].setStyle(IPPR.map.styles.active);
-                        IPPR.map.layers[key][k].openPopup();
+                        //IPPR.map.layers[key][k].openPopup();
+
                         IPPR.map.layers[key][k].bringToFront();
                         IPPR.map.layers[key][k].isActive = true;
                         IPPR.map.markers[key][k].isActive = true;
@@ -197,7 +217,7 @@
                 });
 
                 $.each(IPPR.map.layers[key], function (k, v) {
-                    if (IPPR.states.view === 'mines' && $.inArray(v.ID, ids) < 0 || IPPR.states.view === 'companies' && $.inArray(v.company_id, ids) < 0) {
+                    if (IPPR.states.view === 'mines' && $.inArray(v.ID, ids) < 0 || IPPR.states.view === 'minerals' && $.inArray(v.ID, ids) < 0 || IPPR.states.view === 'companies' && $.inArray(v.company_id, ids) < 0) {
 
                         IPPR.map.layers[key][k].setStyle(IPPR.map.styles.filtered);
 
@@ -960,6 +980,8 @@
                 if (IPPR.states.desktop) {
                     if (key === '1') {
                         IPPR.map.highlightLayer('2', id);
+                    } else if (key === '2') {
+                        IPPR.map.highlightLayer('4', id);
                     } else {
                         IPPR.map.highlightLayer(key, id);
                     }

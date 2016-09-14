@@ -371,7 +371,7 @@
                             </p>
                             <ul class="collection collapsible" data-collapsible="accordion">
                             </ul>
-                            <div class="Map Map--1 Map--inline companies hide-on-large-only"></div>
+                            <div class="Map Map--1 Map--inline minerals hide-on-large-only"></div>
                             <div class="Table row hide-on-large-only"></div>
                             <div class="OwnedLicenses row hide-on-large-only"></div>
                             <div class="Hierarchy row hide-on-large-only"></div>
@@ -381,7 +381,7 @@
 
                 </div>
 
-                <div class="Map Map--1 companies"></div>
+                <div class="Map Map--1 minerals"></div>
 
 
                 <div class="Loader">
