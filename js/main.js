@@ -176,7 +176,7 @@
                         */
                         
                         IPPR.map.layers[key][k].setStyle(IPPR.map.styles.active);
-                        //IPPR.map.layers[key][k].openPopup();
+                        IPPR.map.layers[key][k].openPopup();
                         
                         IPPR.map.layers[key][k].bringToFront();
                         IPPR.map.layers[key][k].isActive = true;
