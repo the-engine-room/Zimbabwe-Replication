@@ -102,7 +102,7 @@
             <div class="row">
                 <div class="col s12">
                     <h1 class="Header-title">
-                        <a href="/">                            
+                        <a href="/">
                             <span class="Header-title--primary">Zimbabwe</span>
                             <span class="Header-title--secondary">Transparent Mining</span>
                         </a>
@@ -173,7 +173,7 @@
 
             <div class="row center-align Footer-logos">
                 <div class="col s12 m10 offset-m1">
-                    <p class="Footer-poweredBy">a project by</p>
+                    <p class="Footer-poweredBy">a <a href="http://diig.io">diig.io</a> project by</p>
                     <a href="http://www.ippr.org.na/">
                         <img src="/images/dist/zela.png" alt="IPPR" width="379" height="77" class="Footer--ippr" />
                         <img src="/images/dist/zela.png" alt="IPPR" width="379" height="77" class="Footer--ipprSmall" />
