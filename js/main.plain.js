@@ -364,7 +364,7 @@
         /*
         ** ... get the geo json data
         */
-        $.getJSON('/data/zw_mines.geojson', function (data) {
+        $.getJSON('https://miningpachena.carto.com/api/v2/sql/?format=GeoJSON&q=SELECT * FROM zw_mines', function (data) {
 
             /*
             ** ... for each map in the dom initialize the maps and populate with layers and markers
