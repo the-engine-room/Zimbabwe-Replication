@@ -57,7 +57,17 @@
 <p>We work with partners in more than 30 countries – from across Africa, Asia, the Americas and Pacific – to achieve these goals.</p>
               </div>
             </div>
-        
+            <div class="Block row">
+              <div class="col s4">
+                <a href="http://www.zela.org/" title="Zimbabwe Environmental Law Association">
+                    <img src="/images/dist/zela_logo.jpg" alt="Zimbabwe Environmental Law Association" />
+                </a>
+              </div>
+              <div class="col s8">
+              <p class="Block-title"> <a href="http://www.zela.org/" title="Zimbabwe Environmental Law Association">ZELA</a> - Zimbabwe Environmental Law Association </p>
+              <p>Zimbabwe Environmental Law Association is a non-governmental organisation who seeks to promote environmental justice, sustainable and equitable use of natural resources, democracy and good governance in the natural resources and environment sector. We seek to accomplish our mission through legal and policy research, advocacy, impact litigation, conflict resolution and civic education. Our work spans over helping poor communities to assert and claim their environmental, economic, social and cultural rights within the natural resources and environmental sector. We also seek to ensure that environmental and natural resources management policies, strategies and legal frameworks respond positively to the needs of marginalized women, men and youths living in urban and rural communities.</p>
+              </div>
+            </div>
         <h2>Main Contributors</h2>
             <div class="Block row">
               <div class="col s4">
