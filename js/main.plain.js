@@ -105,7 +105,6 @@
                     sql: "SELECT mns.cartodb_id as mine_id, mns.district AS mine_district, mns.name AS mine_name, mns.region AS mine_region, mns.status AS mine_status, mls.name AS mineral FROM zw_mines mns, zw_mine_minerals mm, zw_minerals mls WHERE mns.cartodb_id = mm.mine_id AND mm.mineral_id = mls.cartodb_id",
                     groupBy: 'mineral'
                 }
-
             }
         },
         map: {
@@ -406,7 +405,7 @@
                 /*
                 ** ... base layer with the map of the world
                 */
-                L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png', {
+                L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
                     maxZoom: 18
                 }).addTo(IPPR.map.map[key]);
 
