@@ -429,7 +429,7 @@
 
             <div class="AdditionalInfo-header ui-colors green u-cf">
 
-                <h2 class="AdditionalInfo-title">Transaction history for Licence number <span></span></h2>
+                <h2 class="AdditionalInfo-title">Transaction history for Registration number <span></span></h2>
 
                 <a class="waves-effect waves-light btn orange AdditionalInfo-download"><i class="material-icons right">file_download</i>Download data</a>
 
