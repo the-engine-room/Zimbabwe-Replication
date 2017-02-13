@@ -542,11 +542,10 @@
         {{#hierarchy}}
             <div class="col s6 m4 l3 Hierarchy-data">
                 <div class="Block">
-                    <p class="Block-title">{{name}}{{^name}}<i>unknown</i>{{/name}}</p>
+                    <p class="Block-title">{{first_name}} {{last_name}}{{^first_name}}<i>unknown</i>{{/first_name}}</p>
                     <p>Nationality: {{nationality}}{{^nationality}}<i>unknown</i>{{/nationality}}</p>
                     <p>Start date: {{start_date}}{{^start_date}}<i>unknown</i>{{/start_date}}</p>
                     <p>Role: {{role}}{{^role}}<i>unknown</i>{{/role}}</p>
-                    <p class="Block-title">{{#percent_interest}}{{percent_interest}}%{{/percent_interest}}{{^percent_interest}}<i>unknown</i>{{/percent_interest}}</p>
                 </div>
             </div>
         {{/hierarchy}}

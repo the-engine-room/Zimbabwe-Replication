@@ -639,7 +639,7 @@
             ** SELECT * FROM na_people WHERE company_id = 6 ORDER BY name ASC
             */
 
-            $.getJSON('https://miningpachena.carto.com/api/v2/sql/?q=SELECT * FROM zw_people WHERE company_id = ' + item.data('id'), function (data) {
+            $.getJSON('https://miningpachena.carto.com/api/v2/sql/?q=SELECT * FROM zw_people P JOIN zw_company_people C ON P.cartodb_id = C.people_id WHERE company_id = ' + item.data('id'), function (data) {
 
                 finalHierarchy = Mustache.render(hierarchyTpl, {
                     hierarchy: data.rows
@@ -652,15 +652,23 @@
                 }
             });
 
-            if (IPPR.states.mobile) {
-                $(IPPR.dom.lists.extra).find(IPPR.dom.table).html(finalTable);
-                // $(IPPR.dom.lists.extra).find('.OwnedLicenses').html(finalownedLicenses);
-                IPPR.dom.additionalInfo.addClass(IPPR.states.hidden);
-            } else {
-                IPPR.dom.additionalInfo.removeClass(IPPR.states.hidden);
-                IPPR.dom.additionalInfo.find(IPPR.dom.table).html(finalTable).removeClass(IPPR.states.hidden);
-                // IPPR.dom.additionalInfo.find('.OwnedLicenses').html(finalownedLicenses).removeClass(IPPR.states.hidden);
-            }
+            //    $.getJSON('https://miningpachena.carto.com/api/v2/sql/?q=SELECT * FROM zw_companies C JOIN zw_company_expenditures E ON C.cartodb_id = CAST(E.company_id AS Integer) JOIN zw_expenditures D ON CAST(E.revenue_id AS Integer) = ' + item.data('id'), function(data) {
+
+            //         console.log(data);
+
+            //     });
+
+
+            //     if (IPPR.states.mobile){
+            //         $(IPPR.dom.lists.extra).find(IPPR.dom.table).html(finalTable);
+            //         // $(IPPR.dom.lists.extra).find('.OwnedLicenses').html(finalownedLicenses);
+            //         IPPR.dom.additionalInfo.addClass(IPPR.states.hidden);
+            //     } else {
+            //         IPPR.dom.additionalInfo.removeClass(IPPR.states.hidden);
+            //         IPPR.dom.additionalInfo.find(IPPR.dom.table).html(finalTable).removeClass(IPPR.states.hidden);
+            //         // IPPR.dom.additionalInfo.find('.OwnedLicenses').html(finalownedLicenses).removeClass(IPPR.states.hidden);
+            //     }
+
         } else {// minerals
 
             }
