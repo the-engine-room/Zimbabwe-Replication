@@ -29,17 +29,9 @@ module.exports = function (grunt) {
                 files: ['Gruntfile.js'],
                 tasks: ['newer:jshint:all']
             },
-            // grunticon: {
-            //     files: 'images/svg/*.svg',
-            //     tasks: ['grunticon']
-            // },
             images: {
                 files: ['images/**/*.{png,jpg,gif,svg}', '!images/dist/**/*.{png,jpg,gif,svg}', '!images/svg/**/*.{png,jpg,gif,svg}', '!images/svg-fallback/**/*.{png,jpg,gif,svg}'],
                 tasks: ['newer:imagemin:dist']
-            },
-            copygrunticon: {
-                files: ['.tmp/grunticon/*'],
-                tasks: ['copy']
             }
         },
 
@@ -102,23 +94,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // SVG Icons https://github.com/filamentgroup/grunticon
-        grunticon: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: 'images/svg/',
-                    src: ['*.svg'],
-                    dest: '.tmp/grunticon/'
-                }],
-                options: {
-                    pngpath: 'images/svg-fallback',
-                    cssprefix: '.Icon--',
-                    preview: false
-                }
-            }
-        },
-
         // Add vendor prefixed styles
         autoprefixer: {
             options: {
@@ -139,9 +114,8 @@ module.exports = function (grunt) {
         php: {
             devel: {
                 options: {
-                    hostname: '0.0.0.0',
                     base: '',
-                    port: 9000
+                    port: 9011
                 }
             }
         },
@@ -153,8 +127,8 @@ module.exports = function (grunt) {
                     src: ['*.html', 'css/**/*.css', 'js/main.plain.js', '*.php']
                 },
                 options: {
-                    proxy: '0.0.0.0:9000', //our PHP server
-                    port: 9011, // our new port
+                    proxy: 'localhost:9011', //our PHP server
+                    port: 9022, // our new port
                     open: true,
                     watchTask: true
                 }
@@ -218,19 +192,6 @@ module.exports = function (grunt) {
 
         // Copy stuff
         copy: {
-
-            grunticonspng: {
-                expand: true,
-                flatten: true,
-                src: '.tmp/grunticon/png/*.png',
-                dest: 'images/svg-fallback/',
-            },
-            grunticonscss: {
-                expand: true,
-                flatten: true,
-                src: '.tmp/grunticon/*.css',
-                dest: 'css/',
-            },
             build: {
                 files: [
                     {

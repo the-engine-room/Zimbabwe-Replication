@@ -102,8 +102,15 @@
             }
 
         }
+
     }
 
+    &-link {
+        &.is-special {
+            color: #fff;
+            background-color: #7E9669;
+        }
+    }
 
     &-tabs {
         margin-bottom: 0;
