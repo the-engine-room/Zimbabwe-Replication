@@ -659,16 +659,15 @@
             //     });
 
 
-            //     if (IPPR.states.mobile){
-            //         $(IPPR.dom.lists.extra).find(IPPR.dom.table).html(finalTable);
-            //         // $(IPPR.dom.lists.extra).find('.OwnedLicenses').html(finalownedLicenses);
-            //         IPPR.dom.additionalInfo.addClass(IPPR.states.hidden);
-            //     } else {
-            //         IPPR.dom.additionalInfo.removeClass(IPPR.states.hidden);
-            //         IPPR.dom.additionalInfo.find(IPPR.dom.table).html(finalTable).removeClass(IPPR.states.hidden);
-            //         // IPPR.dom.additionalInfo.find('.OwnedLicenses').html(finalownedLicenses).removeClass(IPPR.states.hidden);
-            //     }
-
+            if (IPPR.states.mobile) {
+                $(IPPR.dom.lists.extra).find(IPPR.dom.table).html(finalTable);
+                // $(IPPR.dom.lists.extra).find('.OwnedLicenses').html(finalownedLicenses);
+                IPPR.dom.additionalInfo.addClass(IPPR.states.hidden);
+            } else {
+                IPPR.dom.additionalInfo.removeClass(IPPR.states.hidden);
+                IPPR.dom.additionalInfo.find(IPPR.dom.table).html(finalTable).removeClass(IPPR.states.hidden);
+                // IPPR.dom.additionalInfo.find('.OwnedLicenses').html(finalownedLicenses).removeClass(IPPR.states.hidden);
+            }
         } else {// minerals
 
             }
