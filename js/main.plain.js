@@ -62,7 +62,8 @@
                 licenceTable: '.licenceTable-tpl',
                 companyTable: '.companyTable-tpl',
                 ownedLicenses: '.ownedLicenses-tpl',
-                hierarchy: '.hierarchy-tpl'
+                hierarchy: '.hierarchy-tpl',
+                revenue: '.revenue-tpl'
             },
             additionalInfoStrings: {
                 licence: 'Info for Licence number <span></span>',
@@ -70,7 +71,8 @@
             },
             ownedLicenses: '.OwnedLicenses',
             hierarchy: '.Hierarchy',
-            table: '.Table'
+            table: '.Table',
+            revenue: '.Revenue'
         },
         states: {
             loading: 'is-loading',
@@ -532,7 +534,7 @@
     */
     IPPR.displayAdditionalInfo = function (item, type) {
 
-        var tableData, title, mustacheTpl, finalTable, hierarchyTpl, finalHierarchy;
+        var tableData, title, mustacheTpl, finalTable, hierarchyTpl, finalHierarchy, revenueTpl, finalRevenue;
 
         /*
         ** ... if this is licence
@@ -619,6 +621,7 @@
             mustacheTpl = $(IPPR.dom.templates.companyTable).html();
             // ownedLicensesTpl = $('.ownedLicenses-tpl').html();
             hierarchyTpl = $(IPPR.dom.templates.hierarchy).html();
+            revenueTpl = $(IPPR.dom.templates.revenue).html();
 
             Mustache.parse(mustacheTpl);
             // Mustache.parse(ownedLicensesTpl);
@@ -645,19 +648,41 @@
                     hierarchy: data.rows
                 });
 
-                if (IPPR.states.mobile) {
-                    $(IPPR.dom.lists.extra).find(IPPR.dom.hierarchy).html(finalHierarchy);
+                if (data.rows.length) {
+                    if (IPPR.states.mobile) {
+                        $(IPPR.dom.lists.extra).find(IPPR.dom.hierarchy).html(finalHierarchy).removeClass(IPPR.states.hidden);
+                    } else {
+                        IPPR.dom.additionalInfo.find(IPPR.dom.hierarchy).html(finalHierarchy).removeClass(IPPR.states.hidden);
+                    }
                 } else {
-                    IPPR.dom.additionalInfo.find(IPPR.dom.hierarchy).html(finalHierarchy).removeClass(IPPR.states.hidden);
+                    if (IPPR.states.mobile) {
+                        $(IPPR.dom.lists.extra).find(IPPR.dom.hierarchy).addClass(IPPR.states.hidden);
+                    } else {
+                        IPPR.dom.additionalInfo.find(IPPR.dom.hierarchy).addClass(IPPR.states.hidden);
+                    }
                 }
             });
 
-            //    $.getJSON('https://miningpachena.carto.com/api/v2/sql/?q=SELECT * FROM zw_companies C JOIN zw_company_expenditures E ON C.cartodb_id = CAST(E.company_id AS Integer) JOIN zw_expenditures D ON CAST(E.revenue_id AS Integer) = ' + item.data('id'), function(data) {
+            $.getJSON("https://miningpachena.carto.com/api/v2/sql/?q=SELECT * FROM zw_companies C JOIN zw_company_expenditures E ON C.cartodb_id = CAST(E.company_id AS Integer) JOIN zw_expenditures D ON CAST(E.revenue_id AS Integer) = D.cartodb_id WHERE company_id='" + item.data('id') + "'", function (data) {
 
-            //         console.log(data);
+                finalRevenue = Mustache.render(revenueTpl, {
+                    tableRows: data.rows
+                });
 
-            //     });
-
+                if (data.rows.length) {
+                    if (IPPR.states.mobile) {
+                        $(IPPR.dom.lists.extra).find(IPPR.dom.revenue).html(finalRevenue).removeClass(IPPR.states.hidden);
+                    } else {
+                        IPPR.dom.additionalInfo.find(IPPR.dom.revenue).html(finalRevenue).removeClass(IPPR.states.hidden);
+                    }
+                } else {
+                    if (IPPR.states.mobile) {
+                        $(IPPR.dom.lists.extra).find(IPPR.dom.revenue).addClass(IPPR.states.hidden);
+                    } else {
+                        IPPR.dom.additionalInfo.find(IPPR.dom.revenue).addClass(IPPR.states.hidden);
+                    }
+                }
+            });
 
             if (IPPR.states.mobile) {
                 $(IPPR.dom.lists.extra).find(IPPR.dom.table).html(finalTable);
