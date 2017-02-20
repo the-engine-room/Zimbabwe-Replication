@@ -115,7 +115,7 @@
 
             <ul class="Header-navigation">
                 <li><a href="/about/"<?php if($match['name'] == 'about'){ echo ' class="is-active"'; } ?>>About</a></li>
-                <li><a class="Header-link is-special" href="http://www.habelite.com/pachena/index.php">Mining Pachena</a></li>
+                <li><a class="Header-link is-special" href="http://www.zela.org/Pachena/">Community Stories</a></li>
             </ul>
 
             <?php if($match['name'] == 'homepage'){ ?>
