@@ -693,7 +693,7 @@
             });
 
 
-           $.getJSON("https://miningpachena.carto.com/api/v2/sql/?q=SELECT * FROM zw_companies C JOIN zw_company_expenditures E ON C.cartodb_id = CAST(E.company_id AS Integer) JOIN zw_expenditures D ON CAST(E.revenue_id AS Integer) = D.cartodb_id WHERE company_id='" + item.data('id') + "'", function(data) {
+           $.getJSON("https://miningpachena.carto.com/api/v2/sql/?q=SELECT company_id FROM zw_companies C JOIN zw_company_expenditures E ON C.cartodb_id = CAST(E.company_id AS Integer) JOIN zw_expenditures D ON CAST(E.revenue_id AS Integer) = D.cartodb_id WHERE company_id='" + item.data('id') + "'", function(data) {
 
                 finalRevenue = Mustache.render(
                     revenueTpl, {
