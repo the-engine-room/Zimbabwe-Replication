@@ -564,7 +564,7 @@
                 <thead>
                     <tr>
                         <th>Expenditure</th>
-                        <th> 2015</th>
+                        <th> 2015 </th>
                         <th>2016</th>
                         <th>2017</th>
                         <th>Source</th>
@@ -576,9 +576,9 @@
                     {{#tableRows}}
                         <tr>
                         	<td>{{item}}{{^item}}<i>unknown</i>{{/item}}</td>
-                            <td>{{2015}}{{^2015}}<i>unknown</i>{{/2015}}</td>
-                            <td>{{2016}}{{^2016}}<i>unknown</i>{{/2016}}</td>
-                            <td>{{2017}}{{^2017}}<i>unknown</i>{{/2017}}</td>
+                            <td>{{_2015}}{{^_2015}}<i>unknown</i>{{/_2015}}</td>
+                            <td>{{_2016}}{{^_2016}}<i>unknown</i>{{/_2016}}</td>
+                            <td>{{_2017}}{{^_2017}}<i>unknown</i>{{/_2017}}</td>
                             <td>{{source}}{{^source}}<i>unknown</i>{{/source}}</td>
                         </tr>
                     {{/tableRows}}
