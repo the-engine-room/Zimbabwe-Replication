@@ -563,34 +563,22 @@
             <table class="bordered striped highlight responsive-table">
                 <thead>
                     <tr>
-                        <th>Address</th>
-                        <th>Amount milions</th>
-                        <th>Currency</th>
-                        <th>Date formed</th>
-                        <th>Headquarters</th>
-                        <th>Jurisdiction</th>
-                        <th>Item</th>
-                        <th>Name</th>
+                        <th>Expenditure</th>
+                        <th> 2015</th>
+                        <th>2016</th>
+                        <th>2017</th>
                         <th>Source</th>
-                        <th>Website</th>
-                        <th>Year</th>
+
                     </tr>
                 </thead>
 
                 <tbody>
                     {{#tableRows}}
                         <tr>
-                            <td>{{address}}{{^address}}<i>unknown</i>{{/address}}</td>
-                            <td>{{amount_millions}}{{^amount_millions}}<i>unknown</i>{{/amount_millions}}</td>
-                            <td>{{currency}}{{^currency}}<i>unknown</i>{{/currency}}</td>
-                            <td>{{date_formed}}{{^date_formed}}<i>unknown</i>{{/date_formed}}</td>
-                            <td>{{hq}}{{^hq}}<i>unknown</i>{{/hq}}</td>
-                            <td>{{jurisdiction}}{{^jurisdiction}}<i>unknown</i>{{/jurisdiction}}</td>
-                            <td>{{item}}{{^item}}<i>unknown</i>{{/item}}</td>
-                            <td>{{name}}{{^name}}<i>unknown</i>{{/name}}</td>
+                            <td>{{2015}}{{^2015}}<i>unknown</i>{{/2015}}</td>
+                            <td>{{2016}}{{^2016}}<i>unknown</i>{{/2016}}</td>
+                            <td>{{2017}}{{^2017}}<i>unknown</i>{{/2017}}</td>
                             <td>{{source}}{{^source}}<i>unknown</i>{{/source}}</td>
-                            <td style="word-wrap: break-word;">{{website}}{{^website}}<i>unknown</i>{{/website}}</td>
-                            <td>{{year}}{{^year}}<i>unknown</i>{{/year}}</td>
                         </tr>
                     {{/tableRows}}
                 </tbody>
