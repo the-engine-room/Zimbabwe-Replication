@@ -575,6 +575,7 @@
                 <tbody>
                     {{#tableRows}}
                         <tr>
+                        	<td>{{item}}{{^item}}<i>unknown</i>{{/item}}</td>
                             <td>{{2015}}{{^2015}}<i>unknown</i>{{/2015}}</td>
                             <td>{{2016}}{{^2016}}<i>unknown</i>{{/2016}}</td>
                             <td>{{2017}}{{^2017}}<i>unknown</i>{{/2017}}</td>
