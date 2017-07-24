@@ -1,9 +1,9 @@
 language: node_js
+cache:
+    directories:
+    - node_modules
 node_js:
 - 5.10.1
-env:
-  global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 addons:
   ssh_known_hosts: engineroom1.koumbit.net
 before_install:
