@@ -1,13 +1,13 @@
 language: node_js
 cache:
-    directories:
-    - node_modules
+  directories:
+  - node_modules
 node_js:
 - 5.10.1
 addons:
   ssh_known_hosts: engineroom1.koumbit.net
 before_install:
-- openssl aes-256-cbc -K $encrypted_b10d7a62ccfd_key -iv $encrypted_b10d7a62ccfd_iv
+- openssl aes-256-cbc -K $encrypted_52ea0aa8da15_key -iv $encrypted_52ea0aa8da15_iv
   -in deploy-key-zimbabwe.enc -out deploy-key-zimbabwe -d
 - chmod 600 ~/.ssh/config
 - chmod 600 deploy-key-zimbabwe
