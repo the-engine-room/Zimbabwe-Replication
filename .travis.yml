@@ -15,8 +15,6 @@ before_install:
 - rm deploy-key-zimbabwe.enc
 - echo -e "Host engineroom1.koumbit.net" >> ~/.ssh/config
 - echo -e "IdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
-- cat ~/.ssh/id_rsa
-- cat ~/.ssh/known_hosts
 - bash scripts/install.sh
 before_script:
 - bash scripts/install.sh
